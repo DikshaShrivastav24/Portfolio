@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diksha Sinha - Computer Science Portfolio</title>
+    <link rel="icon" href="images/ChatGPT Image Apr 24, 2025, 03_29_49 AM.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Add this right after your existing <link> tags in the <head> section -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+    /* Light/Dark Theme Variables */
+    :root {
+        /* Light Theme (Default) */
+        --bg-primary: #f5f5f5;
+        --bg-secondary: #ffffff;
+        --text-primary: #333333;
+        --text-secondary: #666666;
+        --accent-color: #007bff;
+        --card-bg: #ffffff;
+        --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        --nav-bg: #ffffff;
+        --nav-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        --header-bg: linear-gradient(135deg, #4a89dc, #5c9ee0);
+        --section-alternate: #f9f9f9;
+        --border-color: #e0e0e0;
+        --footer-bg: #2c3e50;
+        --footer-text: #ffffff;
+        --input-bg: #ffffff;
+        --input-border: #cccccc;
+        --btn-primary: #007bff;
+        --btn-secondary: transparent;
+        --btn-text: #ffffff;
+        --timeline-bg: #ffffff;
+        --timeline-border: #e0e0e0;
+        --timeline-dot: #007bff;
+        --tag-bg: #e9f2ff;
+        --tag-text: #007bff;
+        --skill-border: #e0e0e0;
+        --cert-bg: #ffffff;
+        --cert-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Dark Theme */
+    [data-theme="dark"] {
+        --bg-primary: #1a1a2e;
+        --bg-secondary: #16213e;
+        --text-primary: #e6e6e6;
+        --text-secondary: #b3b3b3;
+        --accent-color: #4ca6ff;
+        --card-bg: #16213e;
+        --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        --nav-bg: #0f3460;
+        --nav-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        --header-bg: linear-gradient(135deg, #16213e, #0f3460);
+        --section-alternate: #0f3460;
+        --border-color: #2c3e50;
+        --footer-bg: #0f3460;
+        --footer-text: #e6e6e6;
+        --input-bg: #16213e;
+        --input-border: #2c3e50;
+        --btn-primary: #4ca6ff;
+        --btn-secondary: transparent;
+        --btn-text: #ffffff;
+        --timeline-bg: #16213e;
+        --timeline-border: #2c3e50;
+        --timeline-dot: #4ca6ff;
+        --tag-bg: #0f3460;
+        --tag-text: #4ca6ff;
+        --skill-border: #2c3e50;
+        --cert-bg: #16213e;
+        --cert-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Theme Switch Styles */
+    .theme-switch-wrapper {
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        background-color: var(--card-bg);
+        padding: 5px 10px;
+        border-radius: 20px;
+        box-shadow: var(--card-shadow);
+    }
+
+    .theme-switch {
+        display: inline-block;
+        position: relative;
+        width: 50px;
+        height: 25px;
+        margin-right: 8px;
+    }
+
+    .theme-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 25px;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 19px;
+        width: 19px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+    }
+
+    input:checked + .slider {
+        background-color: var(--accent-color);
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(25px);
+    }
+
+    /* Apply dark mode variables to existing elements */
+    body {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    header {
+        background: var(--header-bg);
+        transition: background 0.3s ease;
+    }
+
+    nav#navbar {
+        background-color: var(--nav-bg);
+        box-shadow: var(--nav-shadow);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    nav#navbar a {
+        color: var(--text-primary);
+        transition: color 0.3s ease;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--text-primary);
+        transition: color 0.3s ease;
+    }
+
+    section {
+        background-color: var(--bg-primary);
+        transition: background-color 0.3s ease;
+    }
+
+    section:nth-child(even) {
+        background-color: var(--section-alternate);
+        transition: background-color 0.3s ease;
+    }
+
+    .about-text p, .project-desc, .project-details li, .cert-issuer {
+        color: var(--text-secondary);
+        transition: color 0.3s ease;
+    }
+
+    .stat-item, .skill-category, .project-card, .cert-card, .education-card, .timeline-content {
+        background-color: var(--card-bg);
+        box-shadow: var(--card-shadow);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .skill-category h3 {
+        border-bottom: 1px solid var(--skill-border);
+        transition: border-color 0.3s ease;
+    }
+
+    .skill-item {
+        background-color: var(--bg-primary);
+        border: 1px solid var(--border-color);
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .tag {
+        background-color: var(--tag-bg);
+        color: var(--tag-text);
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    footer {
+        background-color: var(--footer-bg);
+        transition: background-color 0.3s ease;
+    }
+
+    .contact-form input, .contact-form textarea {
+        background-color: var(--input-bg);
+        border: 1px solid var(--input-border);
+        color: var(--text-primary);
+        transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+
+    .timeline-dot {
+        background-color: var(--timeline-dot);
+        transition: background-color 0.3s ease;
+    }
+
+    .timeline-content {
+        border: 1px solid var(--timeline-border);
+        transition: border-color 0.3s ease;
+    }
+</style>
+
+    
+</head>
+<body>
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider">
+                <div class="icons">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </div>
+            </div>
+        </label>
+        <span id="theme-label">Light</span>
+    </div>
+    <header id="home">
+        <div class="container">
+            <img src="images/profile.jpg" alt="Profile Photo" class="profile-img">
+            <h1 style="color: #F5F5F5; text-shadow: 2px 2px 4px rgba(0,0,0,0.4); font-weight: bold;">
+                Diksha Sinha
+            </h1>
+            <p class="tagline">Computer Science Student | DevOps Engineer | Problem Solver</p>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I am a Computer Science and Engineering student at Lovely Professional University with a strong foundation in programming, data structures, and cloud technologies. I am passionate about DevOps practices, infrastructure automation, and developing efficient solutions for modern applications.</p>
+                    <div class="about-buttons">
+                        <a href="#contact" class="btn primary-btn">Contact Me</a>
+                        <a href="#projects" class="btn secondary-btn">View Projects</a>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-title">Projects Completed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-title">Problems Solved</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4+</span>
+                        <span class="stat-title">Certifications</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Skills & Tools</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <img src="images/Cpp.png" alt="C++">
+                            <span>C++</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="images/java.png" alt="Java">
+                            <span>Java</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="images/javascript.png" alt="JavaScript">
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="images/python.png" alt="Python">
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="images/bash.png" alt="Bash">
+                            <span>Bash</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Technologies & Frameworks</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <img src="images/react.png" alt="React JS">
+                            <span>React JS</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="images/angular.png" alt="Angular">
+                            <span>Angular</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="images/nodejs.png" alt="Node.js">
+                            <span>Node.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="images/docker.jpg" alt="Docker">
+                            <span>Docker</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="images/kubernetes.png" alt="Kubernetes">
+                            <span>Kubernetes</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="images/jenkins.jpg" alt="Jenkins">
+                            <span>Jenkins</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="images/terraform.png" alt="Terraform">
+                            <span>Terraform</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="images/grafanalogo.jpg" alt="Grafana">
+                            <span>Grafana</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="images/git.png" alt="Git">
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="images/github.png" alt="GitHub">
+                            <span>GitHub</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Core Skills</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <img src="images/problem-solving.png" alt="Problem-Solving">
+                            <span>Problem-Solving</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="images/teamwork.png" alt="Teamwork">
+                            <span>Teamwork</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="images/time-management.jpeg" alt="Time Management">
+                            <span>Time Management</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="images/adaptability.jpeg" alt="Adaptability">
+                            <span>Adaptability</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases & Platforms</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <img src="images/mysql.png" alt="MySQL">
+                            <span>MySQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="images/mongodbb.png" alt="MongoDB">
+                            <span>MongoDB</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="images/aws.png" alt="AWS">
+                            <span>AWS</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="images/azure.jpg" alt="Microsoft Azure">
+                            <span>Microsoft Azure</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-container">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/infr.png" alt="Infrastructure Automation Using Terraform on AWS">
+                    </div>
+                    <div class="project-info">
+                        <h3>Infrastructure Automation Using Terraform on AWS</h3>
+                        <p class="project-tags">
+                            <span class="tag">AWS</span>
+                            <span class="tag">Terraform</span>
+                            <span class="tag">GitHub</span>
+                            <span class="tag">Infrastructure as Code</span>
+                        </p>
+                        <p class="project-desc">Automated AWS infrastructure provisioning using modular Terraform code.</p>
+                        <ul class="project-details">
+                            <li>Automated AWS infrastructure provisioning using modular Terraform code, deploying resources like VPC, EC2, RDS, S3, and IAM roles.</li>
+                            <li>Managed remote state with S3 and DynamoDB, enabling team collaboration and secure infrastructure tracking.</li>
+                            <li>Ensured high availability using Auto Scaling Groups and Load Balancer, followed IaC best practices with GitHub integration and optional Terraform Cloud.</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/DikshaShrivastav24/-Infrastructure-Automation-Using-Terraform-on-AWS-" class="btn project-btn"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/cicd1.png" alt="CI/CD Pipeline">
+                    </div>
+                    <div class="project-info">
+                        <h3>Build CI/CD Pipeline</h3>
+                        <p class="project-tags">
+                            <span class="tag">Jenkins</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">Terraform</span>
+                            <span class="tag">Grafana</span>
+                        </p>
+                        <p class="project-desc">Designed and deployed scalable CI/CD pipelines to improve deployment efficiency by 40%.</p>
+                        <ul class="project-details">
+                            <li>Designed and deployed scalable CI/CD pipelines using Jenkins and Docker to improve deployment efficiency by 40%.</li>
+                            <li>Automated infrastructure provisioning using Terraform, reducing setup time by 60%.</li>
+                            <li>Implemented monitoring and alerting solutions using Prometheus and Grafana, ensuring 99.9% application uptime.</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/DikshaShrivastav24/Build-CI-CD-Pipeline" class="btn project-btn"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/twotierap.png" alt="Two-Tier Application Deployment">
+                    </div>
+                    <div class="project-info">
+                        <h3>Two-Tier Application Deployment</h3>
+                        <p class="project-tags">
+                            <span class="tag">Docker</span>
+                            <span class="tag">Kubernetes</span>
+                            <span class="tag">NGINX</span>
+                            <span class="tag">AWS</span>
+                        </p>
+                        <p class="project-desc">Developed and deployed a two-tier web application on AWS with separate tiers for the front-end and database.</p>
+                        <ul class="project-details">
+                            <li>Developed and deployed a two-tier web application on AWS with separate tiers for the front-end and database.</li>
+                            <li>Used Docker containers for isolated application environments and Kubernetes for container orchestration.</li>
+                            <li>Configured auto-scaling groups to handle varying traffic loads.</li>
+                            <li>Implemented NGINX as a reverse proxy and load balancer to efficiently route traffic and improve application performance.</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/DikshaShrivastav24/-Two-Tier-Application-Deployment-" class="btn project-btn"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <h2>Certifications</h2>
+            <div class="certifications-container">
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <img src="images/fundamentals.jpg" alt="Microsoft Certified">
+                    </div>
+                    <div class="cert-info">
+                        <h3>Microsoft Certified</h3>
+                        <p class="cert-issuer">Issued by Microsoft - January 2025</p>
+                        <a href="images/fundamentals.jpg" class="btn cert-btn">View Certificate</a>
+                    </div>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <img src="images/cppproject.jpg" alt="Fundamentals of C++">
+                    </div>
+                    <div class="cert-info">
+                        <h3>Fundamentals of C++</h3>
+                        <p class="cert-issuer">Issued by Cipher School - June 2024</p>
+                        <a href="images/cppproject.jpg" class="btn cert-btn">View Certificate</a>
+                    </div>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <img src="images/network.jpg" alt="Fundamentals of Network Communication">
+                    </div>
+                    <div class="cert-info">
+                        <h3>Fundamentals of Network Communication</h3>
+                        <p class="cert-issuer">Issued by Coursera - November 2023</p>
+                        <a href="images/network.jpg" class="btn cert-btn">View Certificate</a>
+                    </div>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <img src="images/hardware.jpg" alt="Introduction to Hardware and Operation Systems">
+                    </div>
+                    <div class="cert-info">
+                        <h3>Introduction to Hardware and Operation Systems</h3>
+                        <p class="cert-issuer">Issued by Coursera - October 2023</p>
+                        <a href="images/hardware.jpg" class="btn cert-btn">View Certificate</a>
+                    </div>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <img src="images/xebia.jpg" alt="Xebia Certified">
+                    </div>
+                    <div class="cert-info">
+                        <h3>Xebia Certified</h3>
+                        <p class="cert-issuer">Issued by Xebia - February 2023</p>
+                        <a href="images/xebia.jpg" class="btn cert-btn">View Certificate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="education-container">
+                <div class="education-card">
+                    <div class="education-logo">
+                        <img src="images/lpu-logo.png" alt="LPU Logo">
+                    </div>
+                    <div class="education-info">
+                        <h3>Lovely Professional University</h3>
+                        <p class="education-degree">B.Tech in Computer Science and Engineering</p>
+                        <p class="education-duration">2022 - Present</p>
+                        <p class="education-location">Punjab, India</p>
+                        <p class="education-score">CGPA: 6.63</p>
+                    </div>
+                </div>
+                
+                <div class="education-card">
+                    <div class="education-logo">
+                        <img src="images/abr.jpg" alt="ABR School Logo">
+                    </div>
+                    <div class="education-info">
+                        <h3>ABR School</h3>
+                        <p class="education-degree">Intermediate (Class 12)</p>
+                        <p class="education-duration">2020 - 2021</p>
+                        <p class="education-location">Bihar, India</p>
+                        <p class="education-score">Percentage: 69%</p>
+                    </div>
+                </div>
+                
+                <div class="education-card">
+                    <div class="education-logo">
+                        <img src="images/dav-logo.jpeg" alt="D.A.V Public School Logo">
+                    </div>
+                    <div class="education-info">
+                        <h3>D.A.V Public School</h3>
+                        <p class="education-degree">Matriculation (Class 10)</p>
+                        <p class="education-duration">2018 - 2019</p>
+                        <p class="education-location">Bihar, India</p>
+                        <p class="education-score">Percentage: 74.6%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Training Section -->
+    <section id="experience">
+        <div class="container">
+            <h2>Training</h2>
+            <div class="experience-container">
+                <div class="experience-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Fundamentals of C++</h3>
+                            <p class="timeline-company">Cipher Schools</p>
+                            <p class="timeline-duration">May 2024 – August 2024</p>
+                            <div class="timeline-details">
+                                <ul>
+                                    <li>Completed an intensive course on C++ programming, covering fundamentals to advanced concepts.</li>
+                                    <li>Gained hands-on experience with Object-Oriented Programming(OOP), STL and structures.</li>
+                                    <li>Worked on problem-solving and algorithmic thinking to enhance coding efficiency.</li>
+                                    <li>Developed small projects and algorithmic thinking to enhance coding efficiency.</li>
+                                    <li>Strengthened debugging and optimization skills through practical exercises.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="dark-section">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Location</h3>
+                        <p>Bihar, India</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <h3>Phone</h3>
+                        <p>+91 9263183131</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>dikshasinha2424@gmail.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <h3>LinkedIn</h3>
+                        <a href="https://www.linkedin.com/in/diksha-sinha-203ba1339/">linkedin.com/in/diksha-sinha</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <h3>GitHub</h3>
+                        <a href="https://github.com/DikshaShrivasatv/24">github.com/DikshaShrivasatv/24</a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Resume Download Section -->
+    <section id="resume" class="resume-section">
+        <div class="container">
+            <div class="resume-container">
+                <div class="resume-content">
+                    <h2>Download My Resume</h2>
+                    <p>Get a comprehensive overview of my skills, experience, and qualifications.</p>
+                    <a href="images/Diksha Sinha CV.pdf" class="btn resume-btn">
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                </div>
+                <div class="resume-image">
+                    <img src="images/Screenshot 2025-04-24 025408.png" alt="Resume Preview">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Diksha Sinha</h3>
+                    <p>Computer Science Student</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#experience">Training</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect With Me</h4>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/diksha-sinha-203ba1339/"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/DikshaShrivasatv/24"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Diksha Sinha. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleSwitch = document.querySelector('#checkbox');
+        const themeLabel = document.querySelector('#theme-label');
+        
+        // Check for saved theme preference or use system preference
+        const currentTheme = localStorage.getItem('theme') || 
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        // Set initial theme
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            toggleSwitch.checked = true;
+            themeLabel.textContent = 'Dark';
+        }
+        
+        // Listen for toggle switch change
+        toggleSwitch.addEventListener('change', function(e) {
+            if (e.target.checked) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeLabel.textContent = 'Dark';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                themeLabel.textContent = 'Light';
+            }
+        });
+    });
+</script>
+</html>
